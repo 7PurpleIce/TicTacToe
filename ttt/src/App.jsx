@@ -1,18 +1,35 @@
-import styles from 'app.module.css'
 import { Information } from './components/Information'
 import { Field } from './components/Field'
+import { useState } from 'react'
 
-const AppLayout = () => {
+const AppLayout = ({field, isDraw, isGameEnded, currentPlayer}) => {
+  return(
   <div>
-    <Information />
-    <Field /> 
+    <Information
+      isDraw={isDraw}
+      isGameEnded={isGameEnded}
+      currentPlayer={currentPlayer}
+    />
+    <Field 
+      field={field}
+    /> 
     <button>Перезапуск игры</button>
   </div>
+  )
 }
-function App() {
 
+function App() {
+  const [currentPlayer, setCurrentPlayer] = useState('X')
+  const [isGameEnded, setIsGameEnded] = useState(false)
+  const [isDraw, setIsDraw] = useState(false)
+  const [field, setField] = useState(Array(9).fill(''))
   return (
-    <AppLayout />
+    <AppLayout 
+      field={field}
+      isDraw={isDraw}
+      isGameEnded={isGameEnded}
+      currentPlayer={currentPlayer}
+    />
   )
 }
 
