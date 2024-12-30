@@ -1,8 +1,9 @@
 import { Information } from './components/Information'
 import { Field } from './components/Field'
 import { useState } from 'react'
+import PropTypes from 'prop-types';
 
-const AppLayout = ({field, isDraw, isGameEnded, currentPlayer, restartGame, setField, onCellClick}) => {
+const AppLayout = ({field, isDraw, isGameEnded, currentPlayer, restartGame, onCellClick}) => {
   return(
   <div>
     <Information
@@ -81,3 +82,12 @@ function App() {
 }
 
 export default App
+
+AppLayout.propTypes = {
+  field: PropTypes.arrayOf(PropTypes.string),
+  isDraw: PropTypes.bool,
+  isGameEnded: PropTypes.bool,
+  currentPlayer: PropTypes.string,
+  restartGame: PropTypes.func,
+  onCellClick: PropTypes.func,
+};
