@@ -1,20 +1,17 @@
-import styles from './information.module.css'
-
-const InformationLayout = ({ isDraw, isGameEnded, currentPlayer }) => {
-    const turn = `Ходит: ${currentPlayer}`;
-    const victory = `Победа: ${currentPlayer}`;
-    return (
-      <>
-        {isDraw && <h3>Ничья</h3>}
-        {!isDraw && isGameEnded && <div>{victory}</div>}
-        {!isDraw && !isGameEnded && <div>{turn}</div>}
-      </>
-    );
+const InformationLayout = ({isDraw, isGameEnded, currentPlayer}) => {
+    // isDraw ? "Ничья" : isGameEnded ? <h3>Победа за {currentPlayer}</h3> : <h3> Ходит {currentPlayer}</h3>
+   return(
+        <div>
+            {isDraw && <h3>Ничья</h3>}
+            {!isDraw && isGameEnded && <h3>Победа за {currentPlayer}</h3>}
+            {!isDraw && !isGameEnded && <h3>Ходит: {currentPlayer}</h3>}
+        </div>
+   )
 };
 
-export const Information = () => {
+export const Information = ({isDraw, isGameEnded, currentPlayer}) => {
 
     return(
-        <InformationLayout />
+        <InformationLayout isDraw={isDraw} isGameEnded={isGameEnded} currentPlayer={currentPlayer}/>
     )
 }
